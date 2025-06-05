@@ -1,8 +1,8 @@
 <?php
 
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'admin'); // Reemplaza con tu usuario de MySQL
-define('DB_PASSWORD', ''); // Reemplaza con tu contraseña de MySQL
+define('DB_USERNAME', 'root'); // Usuario predeterminado de XAMPP
+define('DB_PASSWORD', ''); // Contraseña vacía para el usuario 'root' en XAMPP
 define('DB_NAME', 'puskas_db'); // Reemplaza con el nombre de tu base de datos
 
 // Intentar conectar a la base de datos MySQL
