@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Intentar iniciar sesión
         if (loginUser($username_email, $password, $pdo)) {
             // Inicio de sesión exitoso, redirigir al usuario a la página principal (index.php)
-            header('Location: index.php');
+            header('Location: ../index.php');
             exit();
         } else {
             $error_message = 'Nombre de usuario/correo electrónico o contraseña incorrectos.';
@@ -34,24 +34,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
-    <link rel="stylesheet" href="style.css"> <!-- Asumiendo que tienes un archivo CSS -->
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h2>Iniciar Sesión</h2>
-    <?php if (!empty($error_message)): ?>
-        <p style="color: red;"><?php echo $error_message; ?></p>
-    <?php endif; ?>
-    <form action="login.php" method="POST">
-        <div>
-            <label for="username_email">Nombre de Usuario o Correo Electrónico:</label>
-            <input type="text" id="username_email" name="username_email" value="<?php echo htmlspecialchars($username_email ?? ''); ?>" required>
-        </div>
-        <div>
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">Iniciar Sesión</button>
-    </form>
-    <p>¿No tienes una cuenta? <a href="register.php">Regístrate aquí</a>.</p>
+    <div class="container">
+        <h2>Iniciar Sesión</h2>
+        <?php if (!empty($error_message)): ?>
+            <p class="error-message"><?php echo $error_message; ?></p>
+        <?php endif; ?>
+        <form action="login.php" method="post">
+            <div class="input-group">
+                <i class="fas fa-smoking"></i>
+                <input type="text" id="username_email" name="username_email" placeholder="Usuario o Email" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-beer"></i>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            </div>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <p class="link-text">¿No tienes una cuenta? <a href="register.php">Regístrate aquí</a>.</p>
+    </div>
 </body>
 </html>

@@ -41,33 +41,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuario</title>
-    <link rel="stylesheet" href="style.css"> <!-- Asumiendo que tienes un archivo CSS -->
+    <title>Registro</title>
+    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h2>Registro de Usuario</h2>
-    <?php if (!empty($error_message)): ?>
-        <p style="color: red;"><?php echo $error_message; ?></p>
-    <?php endif; ?>
-    <form action="register.php" method="POST">
-        <div>
-            <label for="username">Nombre de Usuario:</label>
-            <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username ?? ''); ?>" required>
-        </div>
-        <div>
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
-        </div>
-        <div>
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div>
-            <label for="confirm_password">Confirmar Contraseña:</label>
-            <input type="password" id="confirm_password" name="confirm_password" required>
-        </div>
-        <button type="submit">Registrarse</button>
-    </form>
-    <p>¿Ya tienes una cuenta? <a href="login.php">Inicia sesión aquí</a>.</p>
+    <div class="container">
+        <h2>Registrarse</h2>
+        <?php if (!empty($error_message)): ?>
+            <p class="error-message"><?php echo $error_message; ?></p>
+        <?php endif; ?>
+        <form action="register.php" method="post">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" name="username" placeholder="Usuario" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-beer"></i>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-beer"></i>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmar Contraseña" required>
+            </div>
+            <button type="submit">Registrarse</button>
+        </form>
+        <p class="link-text">¿Ya tienes una cuenta? <a href="login.php">Inicia sesión aquí</a>.</p>
+    </div>
 </body>
 </html>
