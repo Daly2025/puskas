@@ -7,40 +7,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puskas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        .header-right {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-        .header-right a {
-            margin-left: 10px;
-            text-decoration: none;
-            color: #007bff;
-        }
-        .header-right a:hover {
-            text-decoration: underline;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        a {
-            text-decoration: none;
-            color: #007bff;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="public/main.css"> <!-- Nuevo archivo CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="header-right">
@@ -53,12 +21,24 @@ session_start();
         <?php endif; ?>
     </div>
 
-    <h1>Bienvenida a Cas'Pilar</h1>
-    <p>Aquí podrás subir y ver fotos y videos.</p>
-    <ul>
-        <li><a href="index.php">Inicio</a></li>
-        <li><a href="public/photos.php">Galería de Fotos</a></li>
-        <li><a href="public/videos.php">Galería de Videos</a></li>
-    </ul>
+    <div class="container">
+        <h1>Bienvenida a Cas'Pilar</h1>
+        <p>Aquí podrás subir y ver fotos y videos.</p>
+
+        <nav>
+            <ul>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="public/photos.php">Galería de Fotos</a></li>
+                <li><a href="public/videos.php">Galería de Videos</a></li>
+            </ul>
+        </nav>
+
+        <?php if (isset($_SESSION['username'])): ?>
+            <div class="upload-buttons">
+                <a href="public/upload_photo.php" class="button"><i class="fas fa-upload"></i> Subir Foto</a>
+                <a href="public/upload_video.php" class="button"><i class="fas fa-upload"></i> Subir Video</a>
+            </div>
+        <?php endif; ?>
+    </div>
 </body>
 </html>
