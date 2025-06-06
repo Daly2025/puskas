@@ -1,0 +1,143 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.header-right {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+.header-right a {
+    color: #fff;
+    text-decoration: none;
+    background-color: rgba(255,255,255,0.15);
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.header-right a:hover {
+    background-color: rgba(255,255,255,0.35);
+}
+
+.header-right span {
+    align-self: center;
+    font-size: 1rem;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: rgba(0, 0, 0, 0.4);
+    max-width: 800px;
+    width: 100%;
+    border-radius: 12px;
+    padding: 30px 40px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    margin-top: 30px;
+}
+
+.container h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+.container p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+/* Navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+nav ul li a {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.15);
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #fff;
+    color: #764ba2;
+    box-shadow: 0 0 10px #fff;
+}
+
+/* Botones de subida */
+.upload-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.button {
+    background-color: #764ba2;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    box-shadow: 0 6px 15px rgba(118,75,162,0.7);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button i {
+    font-size: 1.3rem;
+}
+
+.button:hover {
+    background-color: #5e348a;
+    box-shadow: 0 10px 20px rgba(94,52,138,0.9);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .upload-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
