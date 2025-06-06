@@ -1,0 +1,86 @@
+body {
+    background-color: #f0f2f5; /* Un color de fondo suave */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco translúcido */
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-family: 'Gabriel Weiss Friends';
+    color: #333; /* Color oscuro para el título */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.upload-form {
+    background-color: #ffffff; /* Fondo blanco sólido para el formulario */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+}
+
+.upload-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.upload-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555; /* Color oscuro para las etiquetas */
+    font-family: Arial, sans-serif;
+    font-size: 1.1em;
+}
+
+.upload-form input[type="file"],
+.upload-form input[type="text"] {
+    width: calc(100% - 22px); /* Ajuste para padding y borde */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.upload-form button[type="submit"] {
+    background-color: #007bff; /* Un color azul para el botón */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.upload-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.link-text a {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 20px;
+    display: block;
+}
+
+.link-text a:hover {
+    text-decoration: underline;
+}
