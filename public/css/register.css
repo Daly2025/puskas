@@ -1,6 +1,10 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #FFFF00, #90EE90); /* Amarillo a Verde claro */
+    background-image: url('../uploads/fondofor.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;

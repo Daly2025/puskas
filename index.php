@@ -16,7 +16,7 @@ session_start();
             <span>Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
             <a href="public/logout.php">Cerrar Sesión</a>
         <?php else: ?>
-       
+            <a href="public/login.php">Iniciar Sesión</a>
         <?php endif; ?>
     </div>
 
