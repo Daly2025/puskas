@@ -28,24 +28,8 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Galería de Fotos</title>
     <link rel="stylesheet" href="main.css" />
-    <style>
-      /* Estilos básicos para la galería */
-      .photo-gallery {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-      .photo-item {
-        max-width: 200px;
-        text-align: center;
-      }
-      .photo-item img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 4px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      }
-    </style>
+    <link rel="stylesheet" href="photos.css" />
+    <!-- The inline style block below will be removed -->
 </head>
 <body>
     <div class="container">
