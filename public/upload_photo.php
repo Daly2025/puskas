@@ -14,16 +14,30 @@ $message = '';
 
 // Lógica para manejar la subida de fotos
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Directorio donde se guardarán las fotos
+    // Directorio donde se guardarán las fotos, dentro de public/
     $target_dir = "uploads/";
+
     // Crear el directorio si no existe
     if (!is_dir($target_dir)) {
         mkdir($target_dir, 0777, true);
     }
 
-    $target_file = $target_dir . basename($_FILES["photo_file"]["name"]);
+    // Asegurarse que el nombre del archivo sea único para evitar sobreescrituras
+    $filename = basename($_FILES["photo_file"]["name"]);
+    $file_ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+    $file_base = pathinfo($filename, PATHINFO_FILENAME);
+    
+    $counter = 0;
+    $target_file = $target_dir . $filename;
+
+    while (file_exists($target_file)) {
+        $counter++;
+        $filename = $file_base . "_" . $counter . "." . $file_ext;
+        $target_file = $target_dir . $filename;
+    }
+
     $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $imageFileType = $file_ext;
 
     // Comprobar si el archivo de imagen es una imagen real o una imagen falsa
     $check = getimagesize($_FILES["photo_file"]["tmp_name"]);
@@ -31,12 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $uploadOk = 1;
     } else {
         $message = "El archivo no es una imagen.";
-        $uploadOk = 0;
-    }
-
-    // Comprobar si el archivo ya existe
-    if (file_exists($target_file)) {
-        $message = "Lo siento, el archivo ya existe.";
         $uploadOk = 0;
     }
 
@@ -55,20 +63,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Comprobar si $uploadOk es 0 por un error
     if ($uploadOk == 0) {
-        $message = "Lo siento, tu archivo no fue subido.";
+        $message = $message ?: "Lo siento, tu archivo no fue subido.";
     // Si todo está bien, intentar subir el archivo
     } else {
         if (move_uploaded_file($_FILES["photo_file"]["tmp_name"], $target_file)) {
             $photo_title = $_POST['photo_title'] ?? null;
             $user_id = $_SESSION['user_id'];
-            $photo_path = $target_file;
+
+            // Guardar ruta relativa desde 'public/' para que se muestre bien en la galería
+            $photo_path = $target_file; // esto es 'uploads/archivo.ext'
 
             try {
                 $stmt = $pdo->prepare("INSERT INTO photos (user_id, title, file_path) VALUES (?, ?, ?)");
                 $stmt->execute([$user_id, $photo_title, $photo_path]);
-                $message = "La foto ". htmlspecialchars( basename( $_FILES["photo_file"]["name"])) . " ha sido subida y guardada en la base de datos.";
+                $message = "La foto ". htmlspecialchars($filename) . " ha sido subida y guardada en la base de datos.";
             } catch (PDOException $e) {
                 $message = "Error al guardar en la base de datos: " . $e->getMessage();
+                // Opcional: eliminar el archivo si falla la BD
+                if (file_exists($target_file)) {
+                    unlink($target_file);
+                }
             }
         } else {
             $message = "Lo siento, hubo un error al subir tu archivo.";
@@ -81,10 +95,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Subir Foto</title>
-    <link rel="stylesheet" href="login.css"> <!-- Puedes usar un CSS existente o crear uno nuevo -->
+    <link rel="stylesheet" href="login.css" />
 </head>
 <body>
     <div class="container">
@@ -95,11 +109,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action="upload_photo.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="photo_file">Seleccionar Foto:</label>
-                <input type="file" id="photo_file" name="photo_file" accept="image/*" required>
+                <input type="file" id="photo_file" name="photo_file" accept="image/*" required />
             </div>
             <div class="form-group">
                 <label for="photo_title">Título (opcional):</label>
-                <input type="text" id="photo_title" name="photo_title">
+                <input type="text" id="photo_title" name="photo_title" />
             </div>
             <button type="submit">Subir Foto</button>
         </form>
