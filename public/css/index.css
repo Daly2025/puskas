@@ -1,5 +1,5 @@
 body {
-    background-image: url('../uploads/friends.jpeg');
+    background-image: url('../uploads/friends.jpeg'); /* Correcta ruta relativa */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -19,7 +19,7 @@ h1 {
 }
 
 .button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -35,4 +35,41 @@ h1 {
 
 .button:hover {
     background-color: #45a049;
+}
+
+/* Estilos agregados */
+.header-right {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 1em;
+}
+
+.header-right a {
+    margin-left: 15px;
+    color: white;
+    text-decoration: underline;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo translúcido */
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: underline;
 }
