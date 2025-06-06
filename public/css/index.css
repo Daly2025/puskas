@@ -16,7 +16,7 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+
 }
 
 h1 {
@@ -27,7 +27,7 @@ h1 {
 }
 
 .button {
-    font-family: 'Gabriel Weiss Friends', cursive, sans-serif;
+
     background-color: #4CAF50;
     border: none;
     color: white;
