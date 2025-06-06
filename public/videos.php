@@ -44,6 +44,10 @@ try {
                     <?php if (!empty($video['title'])): ?>
                         <p><?php echo htmlspecialchars($video['title']); ?></p>
                     <?php endif; ?>
+                    <div class="buttons">
+                        <button onclick="location.href='comment.php?video_id=<?php echo $video['id']; ?>'">Comentar</button>
+                        <button onclick="location.href='view_comments.php?video_id=<?php echo $video['id']; ?>'">Ver comentarios</button>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>

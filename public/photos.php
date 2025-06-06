@@ -44,6 +44,10 @@ try {
                         <?php if (!empty($photo['title'])): ?>
                             <p><?php echo htmlspecialchars($photo['title']); ?></p>
                         <?php endif; ?>
+                        <div class="buttons">
+                            <button onclick="location.href='comment.php?photo_id=<?php echo $photo['id']; ?>'">Comentar</button>
+                            <button onclick="location.href='view_comments.php?photo_id=<?php echo $photo['id']; ?>'">Ver comentarios</button>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
