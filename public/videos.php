@@ -23,24 +23,10 @@ try {
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería de Videos</title>
-    <style>
-        .video-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .video-item {
-            max-width: 320px;
-        }
-        video {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-    </style>
+    <link rel="stylesheet" href="css/videos.css" />
 </head>
 <body>
     <h1>Galería de Videos</h1>

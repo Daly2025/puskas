@@ -27,9 +27,9 @@ try {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Galería de Fotos</title>
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="photos.css" />
-    <!-- The inline style block below will be removed -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/photos.css" />
+    <!-- Elimina el bloque de estilos <style>...</style> que estaba aquí -->
 </head>
 <body>
     <div class="container">
