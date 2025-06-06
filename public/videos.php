@@ -49,6 +49,6 @@ try {
         </div>
     <?php endif; ?>
 
-    <p><a href="index.php">Volver al Inicio</a></p>
+    <p><a href="../index.php">Volver al Inicio</a></p>
 </body>
 </html>
