@@ -75,11 +75,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="container">
-        <h2>Subir Nuevo Video</h2>
+        <h2 class="form-title">Subir Nuevo Video</h2>
         <?php if (!empty($message)): ?>
             <p><?php echo $message; ?></p>
         <?php endif; ?>
-        <form action="upload_video.php" method="post" enctype="multipart/form-data">
+        <form action="upload_video.php" method="post" enctype="multipart/form-data" class="upload-form">
             <div class="form-group">
                 <label for="video_file">Seleccionar Video:</label>
                 <input type="file" id="video_file" name="video_file" accept="video/*" required>

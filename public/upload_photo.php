@@ -102,11 +102,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="container">
-        <h2>Subir Nueva Foto</h2>
+        <h2 class="form-title">Subir Nueva Foto</h2>
         <?php if (!empty($message)): ?>
             <p><?php echo $message; ?></p>
         <?php endif; ?>
-        <form action="upload_photo.php" method="post" enctype="multipart/form-data">
+        <form action="upload_photo.php" method="post" enctype="multipart/form-data" class="upload-form">
             <div class="form-group">
                 <label for="photo_file">Seleccionar Foto:</label>
                 <input type="file" id="photo_file" name="photo_file" accept="image/*" required />
