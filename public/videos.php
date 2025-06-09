@@ -47,6 +47,8 @@ try {
                     <div class="buttons">
                         <button onclick="location.href='comment.php?video_id=<?php echo $video['id']; ?>'">Comentar</button>
                         <button onclick="location.href='view_comments.php?video_id=<?php echo $video['id']; ?>'">Ver comentarios</button>
+                        <button onclick="location.href='edit_video.php?video_id=<?php echo $video['id']; ?>'">Editar</button>
+                        <button onclick="location.href='delete_video.php?video_id=<?php echo $video['id']; ?>'" onclick="return confirm('¿Estás seguro de que quieres eliminar este video?');">Eliminar</button>
                     </div>
                 </div>
             <?php endforeach; ?>
