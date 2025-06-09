@@ -37,8 +37,8 @@ try {
     // Obtener comentarios del medio
     if ($media_type === 'photo') {
         $stmt = $pdo->prepare("SELECT c.id, c.comment_text, c.user_id, u.username FROM comments c JOIN users u ON c.user_id = u.id WHERE c.photo_id = ? ORDER BY c.created_at DESC");
-    } else {
-        $stmt = $pdo->prepare("SELECT c.id, c.comment AS comment_text, c.user_id, u.username FROM video_comments c JOIN users u ON c.user_id = u.id WHERE c.video_id = ? ORDER BY c.created_at DESC");
+     } else {
+         $stmt = $pdo->prepare("SELECT c.id, c.comment AS comment_text, c.user_id, u.username FROM video_comments c JOIN users u ON c.user_id = u.id WHERE c.video_id = ? ORDER BY c.created_at DESC");
     }
     $stmt->execute([$media_id]);
     $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -88,7 +88,7 @@ try {
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <p><a href="<?php echo ($media_type === 'photo' ? 'photos.php' : 'videos.php'); ?>">Volver a la Galería</a></p>
+        <p><a href="<?php echo ($media_type === 'photo' ? 'photos.php' : 'videos.php'); ?>"><img src="images/back_button.png" alt="Volver a la Galería" style="width:50px;height:50px;"></a></p>
     </div>
 </body>
 </html>

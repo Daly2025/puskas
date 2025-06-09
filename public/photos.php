@@ -53,7 +53,7 @@ try {
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <p class="link-text"><a href="../index.php">Volver al Inicio</a></p>
+        <p class="link-text"><a href="../index.php"><img src="images/home_button.png" alt="Volver al Inicio" style="width:50px;height:50px;"></a></p>
     </div>
 </body>
 </html>
