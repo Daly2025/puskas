@@ -31,7 +31,7 @@ try {
     $stmt->execute([$comment_id]);
 
     // Redirigir de vuelta a la página de comentarios del video
-    header('Location: view_video_comments.php?video_id=' . $comment['video_id']);
+    header('Location: view_comments.php?video_id=' . $comment['video_id']);
     exit();
 
 } catch (PDOException $e) {
