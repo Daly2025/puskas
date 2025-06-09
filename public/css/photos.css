@@ -5,6 +5,15 @@
     padding: 20px;
 }
 
+
+
+
+
+
+
+
+
+
 .photo-item {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -14,12 +23,31 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+
+
+
+
+
+
+
+
+
 .photo-item img {
-    max-width: 100%;
-    height: auto;
+    width: 250px; /* Fixed width for uniform size */
+    height: 250px; /* Fixed height for uniform size */
+    object-fit: cover; /* Ensures the image covers the area, cropping if necessary */
     border-radius: 4px;
     margin-bottom: 10px;
 }
+
+
+
+
+
+
+
+
+
 
 .photo-item p {
     font-size: 1.1em;
@@ -27,9 +55,27 @@
     margin-bottom: 10px;
 }
 
+
+
+
+
+
+
+
+
+
 .photo-item .buttons {
     margin-top: 10px;
 }
+
+
+
+
+
+
+
+
+
 
 .photo-item .buttons button {
     background-color: #007bff;
@@ -42,12 +88,15 @@
     font-size: 0.9em;
 }
 
+
+
+
+
+
+
+
+
+
 .photo-item .buttons button:hover {
     background-color: #0056b3;
-}
-.photo-item img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }

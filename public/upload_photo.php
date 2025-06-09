@@ -73,6 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Guardar ruta relativa desde 'public/' para que se muestre bien en la galería
             $photo_path = $target_file; // esto es 'uploads/archivo.ext'
 
+            // Redimensionar la imagen después de subirla
+            resizeImage($target_file, 800, 800); // Redimensiona a un máximo de 800px de ancho o alto
+
             try {
                 $stmt = $pdo->prepare("INSERT INTO photos (user_id, title, file_path) VALUES (?, ?, ?)");
                 $stmt->execute([$user_id, $photo_title, $photo_path]);
