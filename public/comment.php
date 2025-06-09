@@ -9,25 +9,30 @@ if (!isset($_SESSION['user_id'])) {
 
 require_once '../includes/config.php'; // Incluir la configuración de conexión a la base de datos
 
-$photo_id = $_GET['photo_id'] ?? null;
+$media_id = $_GET['photo_id'] ?? $_GET['video_id'] ?? null;
+$media_type = isset($_GET['photo_id']) ? 'photo' : (isset($_GET['video_id']) ? 'video' : null);
 
-if (!$photo_id) {
-    echo "ID de foto no proporcionado.";
+if (!$media_id || !$media_type) {
+    echo "ID de medio no proporcionado.";
     exit();
 }
 
-$photo = null;
+$media = null;
 try {
-    $stmt = $pdo->prepare("SELECT id, file_path, title FROM photos WHERE id = ? AND user_id = ?");
-    $stmt->execute([$photo_id, $_SESSION['user_id']]);
-    $photo = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($media_type === 'photo') {
+        $stmt = $pdo->prepare("SELECT id, file_path, title FROM photos WHERE id = ?");
+    } else {
+        $stmt = $pdo->prepare("SELECT id, file_path, title FROM videos WHERE id = ?");
+    }
+    $stmt->execute([$media_id]);
+    $media = $stmt->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    echo "Error al cargar la foto: " . $e->getMessage();
+    echo "Error al cargar el medio: " . $e->getMessage();
     exit();
 }
 
-if (!$photo) {
-    echo "Foto no encontrada o no tienes permiso para verla.";
+if (!$media) {
+    echo "Medio no encontrado.";
     exit();
 }
 
@@ -37,8 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($comment_text)) {
         try {
-            $stmt = $pdo->prepare("INSERT INTO comments (media_type, media_id, user_id, comment_text) VALUES (?, ?, ?, ?)");
-            $stmt->execute(['photo', $photo_id, $_SESSION['user_id'], $comment_text]);
+            if ($media_type === 'photo') {
+                $stmt = $pdo->prepare("INSERT INTO comments (photo_id, user_id, comment_text) VALUES (?, ?, ?)");
+                $stmt->execute([$media_id, $_SESSION['user_id'], $comment_text]);
+            } else {
+                $stmt = $pdo->prepare("INSERT INTO video_comments (video_id, user_id, comment) VALUES (?, ?, ?)");
+                $stmt->execute([$media_id, $_SESSION['user_id'], $comment_text]);
+            }
             $message = "Comentario añadido con éxito.";
         } catch (PDOException $e) {
             $message = "Error al añadir el comentario: " . $e->getMessage();
@@ -60,16 +70,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="container">
-        <h1>Comentar Foto</h1>
-        <img src="<?php echo htmlspecialchars($photo['file_path']); ?>" alt="<?php echo htmlspecialchars($photo['title'] ?? 'Foto'); ?>" style="max-width: 300px; height: auto;">
+        <h1>Comentar <?php echo ($media_type === 'photo' ? 'Foto' : 'Video'); ?></h1>
+        <?php if ($media_type === 'photo'): ?>
+            <img src="<?php echo htmlspecialchars($media['file_path']); ?>" alt="<?php echo htmlspecialchars($media['title'] ?? 'Foto'); ?>" style="max-width: 300px; height: auto;">
+        <?php else: ?>
+            <video controls style="max-width: 300px; height: auto;">
+                <source src="<?php echo htmlspecialchars($media['file_path']); ?>" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        <?php endif; ?>
         <?php if ($message): ?>
             <p><?php echo $message; ?></p>
         <?php endif; ?>
-        <form action="comment.php?photo_id=<?php echo $photo_id; ?>" method="POST">
+        <form action="comment.php?<?php echo $media_type; ?>_id=<?php echo $media_id; ?>" method="POST">
             <textarea name="comment_text" rows="5" placeholder="Escribe tu comentario aquí..." required></textarea><br>
             <button type="submit">Añadir Comentario</button>
         </form>
-        <p><a href="photos.php">Volver a la Galería</a></p>
+        <p><a href="<?php echo ($media_type === 'photo' ? 'photos.php' : 'videos.php'); ?>">Volver a la Galería</a></p>
     </div>
 </body>
 </html>
