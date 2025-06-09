@@ -55,6 +55,6 @@ try {
         </div>
     <?php endif; ?>
 
-    <p><a href="../index.php"><img src="images/home_button.png" alt="Volver al Inicio" style="width:50px;height:50px;"></a></p>
+    <p><button onclick="location.href='../index.php'" class="home-button">Volver al Inicio</button></p>
 </body>
 </html>

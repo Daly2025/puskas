@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <button type="submit">Subir Foto</button>
         </form>
-        <p class="link-text"><a href="photos.php"><img src="images/back_button.png" alt="Volver a la Galería" style="width:50px;height:50px;"></a></p>
+        <p class="link-text"><a href="../index.php"><img src="images/home_button.png" alt="Volver al Inicio" style="width:50px;height:50px;"></a></p>
     </div>
 </body>
 </html>
