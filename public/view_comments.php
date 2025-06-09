@@ -81,7 +81,7 @@ try {
                         <?php if ($comment['user_id'] == $_SESSION['user_id']): ?>
                             <div class="comment-actions">
                                 <a href="edit_comment.php?comment_id=<?php echo $comment['id']; ?>">Editar</a>
-                                <a href="delete_comment.php?comment_id=<?php echo $comment['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este comentario?');">Eliminar</a>
+                                <a href="<?php echo ($media_type === 'photo' ? 'delete_comment.php' : 'delete_video_comment.php'); ?>?comment_id=<?php echo $comment['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este comentario?');">Eliminar</a>
                             </div>
                         <?php endif; ?>
                     </div>

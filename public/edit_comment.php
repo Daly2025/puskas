@@ -20,7 +20,7 @@ if (!$comment_id) {
 
 try {
     // Obtener el comentario para editar
-    $stmt = $pdo->prepare("SELECT comment_text, user_id, media_type, media_id FROM comments WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT comment_text, user_id, photo_id FROM comments WHERE id = ?");
     $stmt->execute([$comment_id]);
     $comment = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -30,8 +30,7 @@ try {
     }
 
     $comment_text = $comment['comment_text'];
-    $media_type = $comment['media_type'];
-    $media_id = $comment['media_id'];
+    $photo_id = $comment['photo_id'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $new_comment_text = $_POST['comment_text'] ?? '';
@@ -42,12 +41,8 @@ try {
             $stmt = $pdo->prepare("UPDATE comments SET comment_text = ? WHERE id = ?");
             $stmt->execute([$new_comment_text, $comment_id]);
 
-            // Redirigir de vuelta a la página de comentarios de la foto o video
-            if ($media_type == 'photo') {
-                header('Location: view_comments.php?photo_id=' . $media_id);
-            } else if ($media_type == 'video') {
-                header('Location: view_video_comments.php?video_id=' . $media_id);
-            }
+            // Redirigir de vuelta a la página de comentarios de la foto
+            header('Location: view_comments.php?photo_id=' . $photo_id);
             exit();
         }
     }
@@ -73,11 +68,7 @@ try {
         <form action="edit_comment.php?comment_id=<?php echo htmlspecialchars($comment_id); ?>" method="post">
             <textarea name="comment_text" rows="5" required><?php echo htmlspecialchars($comment_text); ?></textarea><br>
             <button type="submit">Guardar Cambios</button>
-            <?php if ($media_type == 'photo'): ?>
-                <a href="view_comments.php?photo_id=<?php echo htmlspecialchars($media_id); ?>">Cancelar</a>
-            <?php elseif ($media_type == 'video'): ?>
-                <a href="view_video_comments.php?video_id=<?php echo htmlspecialchars($media_id); ?>">Cancelar</a>
-            <?php endif; ?>
+            <a href="view_comments.php?photo_id=<?php echo htmlspecialchars($photo_id); ?>">Cancelar</a>
         </form>
     </div>
 </body>

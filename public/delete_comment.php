@@ -17,7 +17,7 @@ if (!$comment_id) {
 
 try {
     // Verificar que el usuario es el dueño del comentario
-    $stmt = $pdo->prepare("SELECT user_id, media_type, media_id FROM comments WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT user_id, photo_id FROM comments WHERE id = ?");
     $stmt->execute([$comment_id]);
     $comment = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -30,12 +30,8 @@ try {
     $stmt = $pdo->prepare("DELETE FROM comments WHERE id = ?");
     $stmt->execute([$comment_id]);
 
-    // Redirigir de vuelta a la página de comentarios de la foto o video
-    if ($comment['media_type'] == 'photo') {
-        header('Location: view_comments.php?photo_id=' . $comment['media_id']);
-    } else if ($comment['media_type'] == 'video') {
-        header('Location: view_video_comments.php?video_id=' . $comment['media_id']);
-    }
+    // Redirigir de vuelta a la página de comentarios de la foto
+    header('Location: view_comments.php?photo_id=' . $comment['photo_id']);
     exit();
 
 } catch (PDOException $e) {
