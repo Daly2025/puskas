@@ -46,6 +46,8 @@ try {
                         <div class="buttons">
                             <button onclick="location.href='comment.php?photo_id=<?php echo $photo['id']; ?>'">Comentar</button>
                             <button onclick="location.href='view_comments.php?photo_id=<?php echo $photo['id']; ?>'">Ver comentarios</button>
+                            <button onclick="location.href='edit_photo.php?photo_id=<?php echo $photo['id']; ?>'">Editar</button>
+                            <button onclick="location.href='delete_photo.php?photo_id=<?php echo $photo['id']; ?>'" onclick="return confirm('¿Estás seguro de que quieres eliminar esta foto?');">Eliminar</button>
                         </div>
                     </div>
                 <?php endforeach; ?>

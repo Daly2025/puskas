@@ -30,7 +30,7 @@ try {
     }
 
     // Obtener comentarios de la foto
-    $stmt = $pdo->prepare("SELECT c.comment_text, u.username FROM comments c JOIN users u ON c.user_id = u.id WHERE c.media_id = ? AND c.media_type = 'photo' ORDER BY c.created_at DESC");
+    $stmt = $pdo->prepare("SELECT c.id, c.comment_text, c.user_id, u.username FROM comments c JOIN users u ON c.user_id = u.id WHERE c.media_id = ? AND c.media_type = 'photo' ORDER BY c.created_at DESC");
     $stmt->execute([$photo_id]);
     $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -62,6 +62,12 @@ try {
                     <div class="comment-item">
                         <strong><?php echo htmlspecialchars($comment['username']); ?>:</strong>
                         <p><?php echo htmlspecialchars($comment['comment_text']); ?></p>
+                        <?php if ($comment['user_id'] == $_SESSION['user_id']): ?>
+                            <div class="comment-actions">
+                                <a href="edit_comment.php?comment_id=<?php echo $comment['id']; ?>">Editar</a>
+                                <a href="delete_comment.php?comment_id=<?php echo $comment['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este comentario?');">Eliminar</a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
