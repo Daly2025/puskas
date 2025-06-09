@@ -90,6 +90,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// Función para redimensionar la imagen
+function resizeImage($file, $max_width, $max_height, $quality = 80) {
+    list($orig_width, $orig_height) = getimagesize($file);
+    $width = $orig_width;
+    $height = $orig_height;
+
+    // Calcular nuevas dimensiones manteniendo la relación de aspecto
+    if ($width > $max_width || $height > $max_height) {
+        $ratio = $orig_width / $orig_height;
+        if ($ratio > 1) { // Horizontal
+            $width = $max_width;
+            $height = $max_width / $ratio;
+        } else { // Vertical o Cuadrada
+            $height = $max_height;
+            $width = $max_height * $ratio;
+        }
+    }
+
+    $image_p = imagecreatetruecolor($width, $height);
+    $image = imagecreatefromjpeg($file);
+    imagecopyresampled($image_p, $image, 0, 0, 0, 0, $width, $height, $orig_width, $orig_height);
+
+    // Guardar la imagen redimensionada
+    imagejpeg($image_p, $file, $quality);
+    imagedestroy($image_p);
+    imagedestroy($image);
+}
+
 ?>
 
 <!DOCTYPE html>
