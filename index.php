@@ -23,8 +23,8 @@ session_start();
     </div>
 
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Bienvenida a Cas'Pilar</h1>
-        <p class="text-center lead">Aquí podrás subir y ver fotos y videos.</p>
+        <h1 class="text-center mb-4 text-white bg-dark p-2 rounded">Bienvenida a Cas'Pilar</h1>
+        <p class="text-center lead text-white bg-dark p-2 rounded">Aquí podrás subir y ver fotos y videos.</p>
         <div class="text-center mt-4">
             <img src="public/uploads/friends.jpeg" class="img-fluid rounded" alt="Friends" style="max-width: 70%; height: auto;">
         </div>
