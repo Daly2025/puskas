@@ -86,7 +86,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <textarea name="comment_text" rows="5" placeholder="Escribe tu comentario aquí..." required></textarea><br>
             <button type="submit">Añadir Comentario</button>
         </form>
-        <p><a href="../index.php" class="btn btn-primary mt-3">Volver al Inicio</a></p>
+        <p>
+            <a href="<?php echo ($media_type === 'photo' ? 'photos.php' : 'videos.php'); ?>" class="btn btn-secondary mt-3">Volver a la Galería</a>
+            <a href="../index.php" class="btn btn-primary mt-3">Volver al Inicio</a>
+        </p>
     </div>
 </body>
 </html>

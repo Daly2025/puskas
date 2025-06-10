@@ -68,7 +68,8 @@ try {
         <form action="edit_comment.php?comment_id=<?php echo htmlspecialchars($comment_id); ?>" method="post">
             <textarea name="comment_text" rows="5" required><?php echo htmlspecialchars($comment_text); ?></textarea><br>
             <button type="submit">Guardar Cambios</button>
-            <a href="view_comments.php?photo_id=<?php echo htmlspecialchars($photo_id); ?>">Cancelar</a>
+            <a href="view_comments.php?photo_id=<?php echo htmlspecialchars($photo_id); ?>" class="btn btn-secondary">Cancelar</a>
+            <a href="photos.php" class="btn btn-primary">Volver a la Galería</a>
         </form>
     </div>
 </body>

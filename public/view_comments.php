@@ -88,7 +88,10 @@ try {
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <p><a href="../index.php" class="btn btn-primary mt-3">Volver al Inicio</a></p>
+        <p>
+            <a href="<?php echo ($media_type === 'photo' ? 'photos.php' : 'videos.php'); ?>" class="btn btn-secondary mt-3">Volver a la Galería</a>
+            <a href="../index.php" class="btn btn-primary mt-3">Volver al Inicio</a>
+        </p>
     </div>
 </body>
 </html>
