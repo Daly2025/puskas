@@ -12,8 +12,8 @@ require_once '../includes/config.php'; // Incluir la configuración de conexión
 $photos = [];
 try {
     // Consulta para obtener fotos del usuario
-    $stmt = $pdo->prepare("SELECT id, title, file_path FROM photos WHERE user_id = ? ORDER BY id DESC");
-    $stmt->execute([$_SESSION['user_id']]);
+    $stmt = $pdo->prepare("SELECT id, title, file_path FROM photos ORDER BY id DESC");
+    $stmt->execute();
     $photos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Error al cargar las fotos: " . $e->getMessage();
