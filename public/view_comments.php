@@ -80,15 +80,15 @@ try {
                         <p><?php echo htmlspecialchars($comment['comment_text']); ?></p>
                         <?php if ($comment['user_id'] == $_SESSION['user_id']): ?>
                             <div class="comment-actions">
-                                <a href="edit_comment.php?comment_id=<?php echo $comment['id']; ?>">Editar</a>
-                                <a href="<?php echo ($media_type === 'photo' ? 'delete_comment.php' : 'delete_video_comment.php'); ?>?comment_id=<?php echo $comment['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este comentario?');">Eliminar</a>
+                                <a href="edit_comment.php?comment_id=<?php echo $comment['id']; ?>" class="btn btn-sm btn-info">Editar</a>
+                                <a href="<?php echo ($media_type === 'photo' ? 'delete_comment.php' : 'delete_video_comment.php'); ?>?comment_id=<?php echo $comment['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este comentario?');" class="btn btn-sm btn-danger">Eliminar</a>
                             </div>
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <p><a href="../index.php"><img src="images/home_button.png" alt="Volver al Inicio" style="width:50px;height:50px;"></a></p>
+        <p><a href="../index.php" class="btn btn-primary mt-3">Volver al Inicio</a></p>
     </div>
 </body>
 </html>

@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <textarea name="comment_text" rows="5" placeholder="Escribe tu comentario aquí..." required></textarea><br>
             <button type="submit">Añadir Comentario</button>
         </form>
-        <p><a href="../index.php"><img src="images/home_button.png" alt="Volver al Inicio" style="width:50px;height:50px;"></a></p>
+        <p><a href="../index.php" class="btn btn-primary mt-3">Volver al Inicio</a></p>
     </div>
 </body>
 </html>
