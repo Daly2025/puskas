@@ -87,8 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="file" class="form-control" id="video_file" name="video_file" accept="video/*" required>
             </div>
             <div class="mb-3">
-                <label for="video_title" class="form-label">Título (opcional):</label>
-                <input type="text" class="form-control" id="video_title" name="video_title">
+                <label for="video_title" class="form-label">Título:</label>
+                <input type="text" class="form-control" id="video_title" name="video_title" required>
             </div>
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">Subir Video</button>

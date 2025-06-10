@@ -145,8 +145,8 @@ function resizeImage($file, $max_width, $max_height, $quality = 80) {
                 <input type="file" class="form-control" id="photo_file" name="photo_file" accept="image/*" required />
             </div>
             <div class="mb-3">
-                <label for="photo_title" class="form-label">Título (opcional):</label>
-                <input type="text" class="form-control" id="photo_title" name="photo_title" />
+                <label for="photo_title" class="form-label">Título:</label>
+                <input type="text" class="form-control" id="photo_title" name="photo_title" required />
             </div>
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">Subir Foto</button>
