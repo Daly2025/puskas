@@ -27,33 +27,41 @@ try {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Galería de Fotos</title>
-    <link rel="stylesheet" href="public/css/photos.css" />
-    <!-- Elimina el bloque de estilos <style>...</style> que estaba aquí -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Galería de Fotos</h1>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Galería de Fotos</h1>
         <?php if (empty($photos)): ?>
-            <p>Aún no has subido ninguna foto.</p>
+            <div class="alert alert-info text-center" role="alert">
+                Aún no has subido ninguna foto.
+            </div>
         <?php else: ?>
-            <div class="photo-gallery">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
                 <?php foreach ($photos as $photo): ?>
-                    <div class="photo-item">
-                        <img src="<?php echo htmlspecialchars($photo['file_path']); ?>" alt="<?php echo htmlspecialchars($photo['title'] ?? 'Foto'); ?>" />
-                        <?php if (!empty($photo['title'])): ?>
-                            <p><?php echo htmlspecialchars($photo['title']); ?></p>
-                        <?php endif; ?>
-                        <div class="buttons">
-                            <button onclick="location.href='comment.php?photo_id=<?php echo $photo['id']; ?>'">Comentar</button>
-                            <button onclick="location.href='view_comments.php?photo_id=<?php echo $photo['id']; ?>'">Ver comentarios</button>
-                            <button onclick="location.href='edit_photo.php?photo_id=<?php echo $photo['id']; ?>'">Editar</button>
-                            <button onclick="location.href='delete_photo.php?photo_id=<?php echo $photo['id']; ?>'" onclick="return confirm('¿Estás seguro de que quieres eliminar esta foto?');">Eliminar</button>
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="<?php echo htmlspecialchars($photo['file_path']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($photo['title'] ?? 'Foto'); ?>">
+                            <div class="card-body">
+                                <?php if (!empty($photo['title'])): ?>
+                                    <h5 class="card-title"><?php echo htmlspecialchars($photo['title']); ?></h5>
+                                <?php endif; ?>
+                                <div class="d-grid gap-2">
+                                    <a href="comment.php?photo_id=<?php echo $photo['id']; ?>" class="btn btn-primary">Comentar</a>
+                                    <a href="view_comments.php?photo_id=<?php echo $photo['id']; ?>" class="btn btn-info">Ver comentarios</a>
+                                    <a href="edit_photo.php?photo_id=<?php echo $photo['id']; ?>" class="btn btn-warning">Editar</a>
+                                    <a href="delete_photo.php?photo_id=<?php echo $photo['id']; ?>" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar esta foto?');">Eliminar</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <button class="home-button" onclick="window.location.href='../index.php'">Volver al Inicio</button>
+        <div class="text-center mt-4">
+            <a href="../index.php" class="btn btn-secondary">Volver al Inicio</a>
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

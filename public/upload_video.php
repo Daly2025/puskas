@@ -71,26 +71,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Subir Video</title>
-    <link rel="stylesheet" href="css/upload.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h2 class="form-title">Subir Nuevo Video</h2>
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Subir Nuevo Video</h2>
         <?php if (!empty($message)): ?>
-            <p><?php echo $message; ?></p>
+            <div class="alert alert-info" role="alert">
+                <?php echo htmlspecialchars($message); ?>
+            </div>
         <?php endif; ?>
-        <form action="upload_video.php" method="post" enctype="multipart/form-data" class="upload-form">
-            <div class="form-group">
-                <label for="video_file">Seleccionar Video:</label>
-                <input type="file" id="video_file" name="video_file" accept="video/*" required>
+        <form action="upload_video.php" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="video_file" class="form-label">Seleccionar Video:</label>
+                <input type="file" class="form-control" id="video_file" name="video_file" accept="video/*" required>
             </div>
-            <div class="form-group">
-                <label for="video_title">Título (opcional):</label>
-                <input type="text" id="video_title" name="video_title">
+            <div class="mb-3">
+                <label for="video_title" class="form-label">Título (opcional):</label>
+                <input type="text" class="form-control" id="video_title" name="video_title">
             </div>
-            <button type="submit">Subir Video</button>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Subir Video</button>
+            </div>
         </form>
-        <p class="link-text"><a href="../index.php"><img src="images/home_button.png" alt="Volver al Inicio" style="width:50px;height:50px;"></a></p>
+        <div class="text-center mt-3">
+            <a href="../index.php" class="btn btn-secondary">Volver al Inicio</a>
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

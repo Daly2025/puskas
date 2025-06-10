@@ -33,28 +33,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Inicio de Sesión</title>
-    <!-- CORREGIDO: Ruta CSS -->
-    <link rel="stylesheet" href="css/login.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
-    <div class="container">
-        <h2>Iniciar Sesión</h2>
-        <?php if (!empty($error_message)): ?>
-            <p class="error-message"><?php echo htmlspecialchars($error_message); ?></p>
-        <?php endif; ?>
-        <form action="login.php" method="post" novalidate>
-            <div class="input-group">
-                <i class="fas fa-user"></i>
-                <input type="text" id="username_email" name="username_email" placeholder="Usuario o Email" required />
-            </div>
-            <div class="input-group">
-                <i class="fas fa-lock"></i>
-                <input type="password" id="password" name="password" placeholder="Contraseña" required />
-            </div>
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-        <p class="link-text">¿No tienes una cuenta? <a href="register.php">Regístrate aquí</a>.</p>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card p-4" style="width: 100%; max-width: 400px;">
+            <h2 class="card-title text-center mb-4">Iniciar Sesión</h2>
+            <?php if (!empty($error_message)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo htmlspecialchars($error_message); ?>
+                </div>
+            <?php endif; ?>
+            <form action="login.php" method="post" novalidate>
+                <div class="mb-3">
+                    <label for="username_email" class="form-label">Usuario o Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <input type="text" class="form-control" id="username_email" name="username_email" placeholder="Usuario o Email" required />
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required />
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                </div>
+            </form>
+            <p class="text-center mt-3">¿No tienes una cuenta? <a href="register.php">Regístrate aquí</a>.</p>
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

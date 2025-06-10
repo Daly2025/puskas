@@ -26,35 +26,48 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería de Videos</title>
-    <link rel="stylesheet" href="css/videos.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Galería de Videos</h1>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Galería de Videos</h1>
 
-    <?php if (empty($videos)): ?>
-        <p>Aún no has subido ningún video.</p>
-    <?php else: ?>
-        <div class="video-gallery">
-            <?php foreach ($videos as $video): ?>
-                <div class="video-item">
-                    <video controls>
-                        <source src="<?php echo htmlspecialchars($video['file_path']); ?>" type="video/mp4">
-                        Tu navegador no soporta la etiqueta de video.
-                    </video>
-                    <?php if (!empty($video['title'])): ?>
-                        <p><?php echo htmlspecialchars($video['title']); ?></p>
-                    <?php endif; ?>
-                    <div class="buttons">
-                        <button onclick="location.href='comment.php?video_id=<?php echo $video['id']; ?>'">Comentar</button>
-                        <button onclick="location.href='view_comments.php?video_id=<?php echo $video['id']; ?>'">Ver comentarios</button>
-                        <button onclick="location.href='edit_video.php?video_id=<?php echo $video['id']; ?>'">Editar</button>
-                        <button onclick="location.href='delete_video.php?video_id=<?php echo $video['id']; ?>'" onclick="return confirm('¿Estás seguro de que quieres eliminar este video?');">Eliminar</button>
+        <?php if (empty($videos)): ?>
+            <div class="alert alert-info text-center" role="alert">
+                Aún no has subido ningún video.
+            </div>
+        <?php else: ?>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <?php foreach ($videos as $video): ?>
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <video controls class="embed-responsive-item w-100">
+                                    <source src="<?php echo htmlspecialchars($video['file_path']); ?>" type="video/mp4">
+                                    Tu navegador no soporta la etiqueta de video.
+                                </video>
+                            </div>
+                            <div class="card-body">
+                                <?php if (!empty($video['title'])): ?>
+                                    <h5 class="card-title"><?php echo htmlspecialchars($video['title']); ?></h5>
+                                <?php endif; ?>
+                                <div class="d-grid gap-2">
+                                    <a href="comment.php?video_id=<?php echo $video['id']; ?>" class="btn btn-primary">Comentar</a>
+                                    <a href="view_comments.php?video_id=<?php echo $video['id']; ?>" class="btn btn-info">Ver comentarios</a>
+                                    <a href="edit_video.php?video_id=<?php echo $video['id']; ?>" class="btn btn-warning">Editar</a>
+                                    <a href="delete_video.php?video_id=<?php echo $video['id']; ?>" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este video?');">Eliminar</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
 
-    <p><button onclick="location.href='../index.php'" class="home-button">Volver al Inicio</button></p>
+        <div class="text-center mt-4">
+            <a href="../index.php" class="btn btn-secondary">Volver al Inicio</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
