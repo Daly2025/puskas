@@ -44,7 +44,9 @@ try {
                     <div class="col">
                         <div class="card h-100">
                             <div class="position-relative">
-                                <img src="<?php echo htmlspecialchars($photo['file_path']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($photo['title'] ?? 'Foto'); ?>">
+                                <a href="<?php echo htmlspecialchars($photo['file_path']); ?>" target="_blank">
+                                    <img src="<?php echo htmlspecialchars($photo['file_path']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($photo['title'] ?? 'Foto'); ?>">
+                                </a>
                                 <a href="<?php echo htmlspecialchars($photo['file_path']); ?>" class="btn btn-dark position-absolute top-0 end-0 m-2 rounded-circle p-2" download style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"><i class="bi bi-download text-white"></i></a>
                             </div>
                             <div class="card-body">
