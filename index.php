@@ -10,7 +10,7 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
+<body style="background-image: url('public/uploads/rock.jpeg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
     <div class="container-fluid bg-light py-3">
         <div class="d-flex justify-content-end align-items-center">
             <?php if (isset($_SESSION['username'])): ?>
@@ -25,6 +25,9 @@ session_start();
     <div class="container mt-5">
         <h1 class="text-center mb-4">Bienvenida a Cas'Pilar</h1>
         <p class="text-center lead">Aquí podrás subir y ver fotos y videos.</p>
+        <div class="text-center mt-4">
+            <img src="public/uploads/friends.jpeg" class="img-fluid rounded" alt="Friends" style="max-width: 70%; height: auto;">
+        </div>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
             <div class="container-fluid">
