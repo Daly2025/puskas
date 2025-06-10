@@ -56,6 +56,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Comentarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/photos.css">
 </head>
 <body>
@@ -88,10 +89,11 @@ try {
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <p>
-            <a href="<?php echo ($media_type === 'photo' ? 'photos.php' : 'videos.php'); ?>" class="btn btn-secondary mt-3">Volver a la Galería</a>
-            <a href="../index.php" class="btn btn-primary mt-3">Volver al Inicio</a>
-        </p>
+            <div class="d-flex justify-content-between mt-3">
+                <a href="<?php echo ($media_type === 'photo' ? 'photos.php' : 'videos.php'); ?>" class="btn btn-secondary">Volver a la Galería</a>
+                <a href="../index.php" class="btn btn-primary">Volver al Inicio</a>
+            </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

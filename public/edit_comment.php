@@ -60,6 +60,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Comentario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/photos.css">
 </head>
 <body>
@@ -68,9 +69,12 @@ try {
         <form action="edit_comment.php?comment_id=<?php echo htmlspecialchars($comment_id); ?>" method="post">
             <textarea name="comment_text" rows="5" required><?php echo htmlspecialchars($comment_text); ?></textarea><br>
             <button type="submit">Guardar Cambios</button>
-            <a href="view_comments.php?photo_id=<?php echo htmlspecialchars($photo_id); ?>" class="btn btn-secondary">Cancelar</a>
-            <a href="photos.php" class="btn btn-primary">Volver a la Galería</a>
+            <div class="d-flex justify-content-between mt-3">
+                <a href="view_comments.php?photo_id=<?php echo htmlspecialchars($photo_id); ?>" class="btn btn-secondary">Cancelar</a>
+                <a href="photos.php" class="btn btn-primary">Volver a la Galería</a>
+            </div>
         </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
