@@ -42,7 +42,10 @@ try {
                 <?php foreach ($photos as $photo): ?>
                     <div class="col">
                         <div class="card h-100">
-                            <img src="<?php echo htmlspecialchars($photo['file_path']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($photo['title'] ?? 'Foto'); ?>">
+                            <div class="position-relative">
+                                <img src="<?php echo htmlspecialchars($photo['file_path']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($photo['title'] ?? 'Foto'); ?>">
+                                <a href="<?php echo htmlspecialchars($photo['file_path']); ?>" class="btn btn-dark position-absolute top-0 end-0 m-2 rounded-circle p-2" download style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"><i class="bi bi-download text-white"></i></a>
+                            </div>
                             <div class="card-body">
                                 <?php if (!empty($photo['title'])): ?>
                                     <h5 class="card-title"><?php echo htmlspecialchars($photo['title']); ?></h5>
@@ -52,7 +55,6 @@ try {
                                     <a href="view_comments.php?photo_id=<?php echo $photo['id']; ?>" class="btn btn-info">Ver comentarios</a>
                                     <a href="edit_photo.php?photo_id=<?php echo $photo['id']; ?>" class="btn btn-warning">Editar</a>
                                     <a href="delete_photo.php?photo_id=<?php echo $photo['id']; ?>" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar esta foto?');">Eliminar</a>
-                                     <a href="<?php echo htmlspecialchars($photo['file_path']); ?>" class="btn btn-success" download><i class="bi bi-download"></i></a>
                                  </div>
                             </div>
                         </div>
